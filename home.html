@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerät auswählen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .device-page {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .device-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 18px 28px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+    transition: transform .15s ease, opacity .15s ease;
+  }
+
+  .device-btn:active {
+    transform: scale(.98);
+  }
+
+  .ios {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+  }
+
+  .android {
+    background: #22c55e;
+    border-color: #22c55e;
+    color: #000;
+  }
+</style>
+</head>
+<body>
+  <div class="device-page">
+    <h1>Welches Gerät benutzt du?</h1>
+    <button class="device-btn ios" onclick="goToLanding('ios')">🍎 iPhone (iOS)</button>
+    <button class="device-btn android" onclick="goToLanding('android')">🤖 Android</button>
+  </div>
+
+<script>
+  function goToLanding(device) {
+    const params = new URLSearchParams(window.location.search);
+    params.set('device', device);
+    const query = params.toString();
+    window.location.href = 'index.html' + (query ? '?' + query : '');
+  }
+</script>
+</body>
+</html>
